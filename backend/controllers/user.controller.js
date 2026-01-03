@@ -80,7 +80,7 @@ const login = async (req, res) => {
             expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
             httpOnly: true, // cannot be access by js directly
             secure: process.env.NODE_ENV === 'production',  //true for https only
-            sameSite: "Strict"  // CSRF attack
+            sameSite: "none"  // CSRF attack
         }
         res.cookie('jwt', token, cookieOptions);
 
