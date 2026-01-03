@@ -139,7 +139,6 @@ const deleteCourse = async (req, res) => {
 const getCourses = async (req, res) => {
     try {
         const courses = await courseModel.find()
-        console.log("Courses fetched:", courses);
         res.status(200).json({
             message: "Courses fetched successfully",
             courses
