@@ -114,7 +114,7 @@ const Courses = () => {
                             <input
                                 type="text"
                                 placeholder="Type here to search..."
-                                className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="pl-10 pr-4 py-2 w-[60%] border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                             />
                             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
                                 🔍
