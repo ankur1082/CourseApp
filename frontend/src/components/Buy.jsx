@@ -105,7 +105,7 @@ const Buy = () => {
 
             try {
                 await axios.post(
-                    'http://localhost:3000/api/v1/order',
+                    `${BACKEND_URL}/order`,
                     paymentInfo,
                     {
                         headers: {
