@@ -131,28 +131,35 @@ const Home = () => {
             <Link to={'https://www.youtube.com/c/LearnCodingOfficial'} className='bg-white py-3 px-6 text-black rounded font-semibold hover:bg-green-500 duration-300 hover:text-white'>Courses Videos</Link>
           </div>
         </section>
-        <section className='mb-10'>
+        <section className="mb-10 w-full overflow-hidden">
           {courses.length > 0 && (
             <Slider {...settings}>
-              {
-                courses.map((course) => {
-                  return <div key={course._id} className='p-4'>
-                    <div className='relative flex-shrink-0 w-full max-w-sm mx-auto transition-transform duration-300 transform hover:scale-105'>
-                      <div className='bg-gray-900 rounded-lg overflow-hidden'>
-                        <img className='h-40 w-full object-cover' src={course.image.url} alt="" />
-                        <div className='text-center my-5'>
-                          <h2 className='text-xl text-white font-bold'>{course.title}</h2>
-                          <Link to={`/buy/${course._id}`} className='mt-4 bg-orange-500 inline-block text-white px-4 py-2 rounded-full'>Enroll Now</Link>
-                        </div>
+              {courses.map(course => (
+                <div key={course._id} className="px-3 w-full">
+                  <div className="w-full transition-transform duration-300 hover:scale-105">
+                    <div className="bg-gray-900 rounded-lg overflow-hidden w-full">
+                      <img
+                        className="h-44 w-full object-cover"
+                        src={course.image.url}
+                        alt={course.title}
+                      />
+                      <div className="text-center my-5 px-3">
+                        <h2 className="text-lg text-white font-bold">
+                          {course.title}
+                        </h2>
+                        <Link
+                          to={`/buy/${course._id}`}
+                          className="mt-4 bg-orange-500 inline-block text-white px-4 py-2 rounded-full"
+                        >
+                          Enroll Now
+                        </Link>
                       </div>
-
                     </div>
                   </div>
-                })
-              }
+                </div>
+              ))}
             </Slider>
           )}
-
         </section>
 
         {/* Footer*/}
