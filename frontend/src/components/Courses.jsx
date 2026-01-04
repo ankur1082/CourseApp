@@ -109,7 +109,7 @@ const Courses = () => {
                 {/* Navbar */}
                 <div className="sticky top-0 z-20 bg-white border-b border-gray-200 px-2 py-2 md:px-6 md:py-4 flex justify-between items-center">
 
-                    <div className="flex items-center gap-2 md:gap-4">
+                    <div className="flex items-center gap-2 md:gap-4 w-full">
                         <div className="relative">
                             <input
                                 type="text"
