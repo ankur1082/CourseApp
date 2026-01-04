@@ -107,7 +107,7 @@ const Courses = () => {
             {/* Right Content */}
             <main className="flex-1 flex flex-col">
                 {/* Navbar */}
-                <div className="sticky top-0 z-20 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
+                <div className="sticky top-0 z-20 bg-white border-b border-gray-200 px-3 py-2 md:px-6 md:py-4 flex justify-between items-center">
                     <h1 className="text-lg font-semibold text-gray-900">Courses</h1>
 
                     <div className="flex items-center gap-4">

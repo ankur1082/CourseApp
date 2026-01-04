@@ -78,7 +78,7 @@ const Purchases = () => {
             <Toaster position="top-right" reverseOrder={false} />
 
             {/* Sidebar */}
-            <aside className="sticky top-0 h-screen w-64 bg-gray-50 border-r border-gray-200 p-2 md:p-4">
+            <aside className="sticky top-0 h-screen w-40 md:w-64 bg-gray-50 border-r border-gray-200 p-4">
                 <Link to="/" className="flex flex-col items-start mb-6">
                     <img src={logo} alt="profile" className="w-14 h-14 rounded-full" />
                 </Link>
