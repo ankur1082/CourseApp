@@ -15,12 +15,16 @@ import { BACKEND_URL } from '../utils/utils'
 const Home = () => {
   const [courses, setCourses] = useState([])
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [token, setToken] = useState(
+    JSON.parse(localStorage.getItem('user'))?.token || null
+  )
 
   const handleLogout = async () => {
     try {
       const response = await axios.get(`${BACKEND_URL}/user/logout`, { withCredentials: true })
       toast.success(response.data.message)
       setIsLoggedIn(false);
+      setToken(null)
       localStorage.removeItem('user')
     } catch (error) {
       if (error.response) {
@@ -46,15 +50,13 @@ const Home = () => {
   }, [])
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'))
-    const token = user?.token
     if (token) {
       setIsLoggedIn(true)
     }
     else {
       setIsLoggedIn(false)
     }
-  }, [])
+  }, [token])
 
 
   var settings = {
