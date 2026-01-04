@@ -107,7 +107,7 @@ const Home = () => {
                 <button onClick={handleLogout} className='text-white bg-transparent px-3 py-1 md:px-5 md:py-2 border border-white rounded'>Logout</button>
               ) :
                 (
-                  <div className='flex gap-2 md:gap-4'>
+                  <div className='flex gap-1 md:gap-4'>
                     <Link to={'/login'} className='text-white bg-transparent px-2 py-1 md:px-5 md:py-2 border border-white rounded'>Login</Link>
                     <Link to={'/signup'} className='text-white bg-transparent px-1 py-1 md:px-5 md:py-2 border border-white rounded'>Signup</Link>
                   </div>
