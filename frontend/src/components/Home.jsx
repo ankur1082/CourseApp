@@ -137,7 +137,7 @@ const Home = () => {
               {
                 courses.map((course) => {
                   return <div key={course._id} className='p-4'>
-                    <div className='relative flex-shrink-0 w-full max-w-sm mx-auto transition-transform duration-300 transform hover:scale-105'>
+                    <div className='relative w-full max-w-sm mx-auto transition-transform duration-300 transform hover:scale-105'>
                       <div className='bg-gray-900 rounded-lg overflow-hidden'>
                         <img className='h-40 w-full object-cover' src={course.image.url} alt="" />
                         <div className='text-center my-5'>
