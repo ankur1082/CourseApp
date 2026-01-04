@@ -12,31 +12,19 @@ const Purchases = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [loading, setLoading] = useState(true)
 
-    const user = JSON.parse(localStorage.getItem('user'))
-    const token = user?.token
+    const [token, setToken] = useState(
+        JSON.parse(localStorage.getItem('user'))?.token || null
+    )
 
-    const handleLogout = async () => {
-        if(!token) {
-            toast.error('Please login first')
-            return
-        }
-        try {
-            const response = await axios.get(
-                `${BACKEND_URL}/user/logout`,
-                { withCredentials: true }
-            )
-            toast.success(response.data.message)
-            localStorage.removeItem('user')
-            setIsLoggedIn(false)
-            navigate('/')
-        } catch (error) {
-            toast.error(error?.response?.data?.errors || "Logout Failed")
-        }
-    }
+    useEffect(() => {
+        const storedUser = JSON.parse(localStorage.getItem('user'))
+        setToken(storedUser?.token || null)
+    }, [])
 
     useEffect(() => {
         if (!token) {
-            toast.error("Please login to access purchased Courses")
+            setCourses([])
+            setIsLoggedIn(false)
             setLoading(false)
             return
         }
@@ -48,30 +36,45 @@ const Purchases = () => {
                     `${BACKEND_URL}/user/purchases`,
                     {
                         headers: {
-                            authorization: `Bearer ${token}`
+                            authorization: `Bearer ${token}`,
                         },
-                        withCredentials: true
+                        withCredentials: true,
                     }
                 )
                 setCourses(response.data.courseData || [])
+                setIsLoggedIn(true)
             } catch (error) {
                 toast.error(
                     error?.response?.data?.errors || "Error in fetching course"
                 )
+                setIsLoggedIn(false)
             } finally {
                 setLoading(false)
             }
         }
 
         fetchCourses()
-    }, [])
+    }, [token])
 
-    useEffect(() => {
-        if(token) {
-            setIsLoggedIn(true)
+    const handleLogout = async () => {
+        try {
+            await axios.get(
+                `${BACKEND_URL}/user/logout`,
+                { withCredentials: true }
+            )
+
+            localStorage.removeItem('user')
+            setToken(null)
+            setCourses([])
+            setIsLoggedIn(false)
+            navigate('/')
+
+            toast.success('Logged out successfully')
+        } catch (error) {
+            toast.error(error?.response?.data?.errors || "Logout Failed")
         }
-        else setIsLoggedIn(false)
-    }, [])
+    }
+
 
     return (
         <div className="flex min-h-screen bg-gray-100">
@@ -136,14 +139,14 @@ const Purchases = () => {
                                     key={course._id}
                                     className="bg-gray-900 rounded-xl shadow-lg overflow-hidden"
                                 >
-                                    
+
                                     <img
                                         src={course.image.url}
                                         alt={course.title}
                                         className="w-full h-40 object-cover"
                                     />
 
-                                    
+
                                     <div className="py-4 px-3">
                                         <h2 className="text-xl text-white">
                                             {course.title}
@@ -166,7 +169,7 @@ const Purchases = () => {
 
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             ))}
                         </div>

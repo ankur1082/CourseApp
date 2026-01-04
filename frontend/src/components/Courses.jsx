@@ -13,18 +13,24 @@ const Courses = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [loading, setLoading] = useState(true)
 
+    const [token, setToken] = useState(
+        JSON.parse(localStorage.getItem('user'))?.token || null
+    )
+
     const handleLogout = async () => {
         try {
             const response = await axios.get(
                 `${BACKEND_URL}/user/logout`,
                 { withCredentials: true }
             )
+
             toast.success(response.data.message)
-            setIsLoggedIn(false)
             localStorage.removeItem('user')
+            setToken(null)
+            setIsLoggedIn(false)
             navigate('/')
         } catch (error) {
-            toast.error(error.response.data.errors || "Logout Failed")
+            toast.error(error?.response?.data?.errors || "Logout Failed")
         }
     }
 
@@ -36,28 +42,25 @@ const Courses = () => {
                     { withCredentials: true }
                 )
                 setCourses(response.data.courses)
-                setLoading(false)
             } catch (error) {
-                if (error.response) {
-                    toast.error(error.response.data.errors);
-                }
-                else {
-                    toast.error("Error in fetching course")
-                }
+                toast.error(
+                    error?.response?.data?.errors || "Error in fetching course"
+                )
+            } finally {
+                setLoading(false)
             }
         }
         fetchCourses()
     }, [])
 
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem('user'))
-        const token = user?.token
         if (token) {
             setIsLoggedIn(true)
         } else {
             setIsLoggedIn(false)
         }
-    }, [])
+    }, [token])
+
 
     return (
         <div className="flex min-h-screen bg-gray-100">
@@ -123,7 +126,7 @@ const Courses = () => {
 
 
                     </div>
-                    
+
                 </div>
 
                 {/* Courses Content */}
