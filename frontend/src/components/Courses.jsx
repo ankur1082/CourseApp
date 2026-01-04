@@ -123,11 +123,7 @@ const Courses = () => {
 
 
                     </div>
-                    <img
-                        src={profile}
-                        alt="profile"
-                        className="w-13 h-10 rounded-full"
-                    />
+                    
                 </div>
 
                 {/* Courses Content */}
