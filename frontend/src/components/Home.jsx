@@ -64,24 +64,23 @@ const Home = () => {
     infinite: false,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 4,
-    initialSlide: 0,
+    slidesToScroll: 1,
+
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
           infinite: true,
           dots: true
         }
       },
       {
-        breakpoint: 600,
+        breakpoint: 768,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
+          slidesToScroll: 1
         }
       },
       {
@@ -93,6 +92,7 @@ const Home = () => {
       }
     ]
   };
+
   return (
     <div className='bg-gradient-to-r from-black to-blue-950'>
       <Toaster position='top-right' reverseOrder={false} />
@@ -137,7 +137,7 @@ const Home = () => {
               {
                 courses.map((course) => {
                   return <div key={course._id} className='p-4'>
-                    <div className='relative flex-shrink-0 w-92 transition-transform duration-300 transform hover:scale-105'>
+                    <div className='relative flex-shrink-0 w-full max-w-sm mx-auto transition-transform duration-300 transform hover:scale-105'>
                       <div className='bg-gray-900 rounded-lg overflow-hidden'>
                         <img className='h-40 w-full object-cover' src={course.image.url} alt="" />
                         <div className='text-center my-5'>
