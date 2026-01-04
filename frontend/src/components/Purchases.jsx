@@ -17,11 +17,6 @@ const Purchases = () => {
     )
 
     useEffect(() => {
-        const storedUser = JSON.parse(localStorage.getItem('user'))
-        setToken(storedUser?.token || null)
-    }, [])
-
-    useEffect(() => {
         if (!token) {
             setCourses([])
             setIsLoggedIn(false)
