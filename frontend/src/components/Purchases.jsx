@@ -121,7 +121,7 @@ const Purchases = () => {
             {/* Right Content */}
             <main className="flex-1 flex flex-col">
                 <h1 className="mt-4 pl-6 text-2xl text-gray-500 font-bold">
-                    Purchased Courses
+                    Purchases
                 </h1>
 
                 <div className="p-3 md:p-6 overflow-y-auto flex-1">
