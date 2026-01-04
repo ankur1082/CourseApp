@@ -127,7 +127,7 @@ const Courses = () => {
                 </div>
 
                 {/* Courses Content */}
-                <div className="p-6 overflow-y-auto flex-1">
+                <div className="p-3 md:p-6 overflow-y-auto flex-1">
                     {loading ? (
                         <p className="text-base text-gray-900 text-center">Loading....</p>
                     ) : courses.length === 0 ? (

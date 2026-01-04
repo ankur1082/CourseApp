@@ -121,10 +121,10 @@ const Purchases = () => {
             {/* Right Content */}
             <main className="flex-1 flex flex-col">
                 <h1 className="mt-4 pl-6 text-2xl text-gray-500 font-bold">
-                    Purchases
+                    Purchased Courses
                 </h1>
 
-                <div className="p-6 overflow-y-auto flex-1">
+                <div className="p-3 md:p-6 overflow-y-auto flex-1">
                     {courses.length === 0 || !isLoggedIn ? (<p className='text-base text-gray-500'>You have no purchased course yet</p>) : loading ? (
                         <p className="text-base text-gray-900 text-center">
                             Loading....
