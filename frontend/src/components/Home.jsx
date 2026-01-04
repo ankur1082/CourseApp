@@ -97,7 +97,7 @@ const Home = () => {
       <div className='px-10 md:px-20 py-6 text-white min-h-screen'>
         {/* Header */}
         <header className='flex justify-between items-center'>
-          <div className='flex gap-2 items-center'>
+          <div className='flex gap-1 md:gap-2 items-center'>
             <img className='h-7 w-7 md:w-11 md:h-11 rounded-full' src={logo} alt="" />
             <h1 className='text-lg md:text-2xl text-orange-500 font-bold'>CourseHaven</h1>
           </div>
