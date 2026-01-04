@@ -140,7 +140,7 @@ const Purchases = () => {
                                     <img
                                         src={course.image.url}
                                         alt={course.title}
-                                        className="w-full h-40 object-cover min-h-2/3"
+                                        className="w-full h-40 object-cover"
                                     />
 
                                     
