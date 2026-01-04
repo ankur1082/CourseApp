@@ -47,16 +47,11 @@ const Login = () => {
         <div className="space-x-2 md:space-x-4">
           <Link
             to="/signup"
-            className="text-white bg-transparent px-1 py-1 md:px-5 md:py-2 border border-white rounded"
+            className="text-white bg-transparent px-3 py-1 md:px-5 md:py-2 border border-white rounded"
           >
             Signup
           </Link>
-          <Link
-            to="/signup"
-            className="text-white bg-orange-500 px-1 py-1 md:px-5 md:py-2 border border-white rounded"
-          >
-            Join now
-          </Link>
+          
         </div>
       </header>
 
