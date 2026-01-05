@@ -72,8 +72,8 @@ const login = async (req, res) => {
         const cookieOptions = {
             expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
             httpOnly: true, // cannot be access by js directly
-            secure: process.env.NODE_ENV === 'production',  //true for https only
-            sameSite: "Strict"  // CSRF attack
+            secure: true,  //true for https only
+            sameSite: "none"  // CSRF attack
         }
         res.cookie('jwt', token, cookieOptions);
 
@@ -97,12 +97,11 @@ const login = async (req, res) => {
 
 const logout = async (req, res) => {
     try {
-        if(!req.cookies.jwt) {
-            return res.status(400).json({
-                errors: "Kindly login first"
-            })
-        }
-        res.clearCookie('jwt')
+        res.clearCookie("jwt", {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none"
+        });
         res.status(200).json({
             message: "Admin logged out successfully"
         })
