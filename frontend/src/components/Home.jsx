@@ -39,7 +39,7 @@ const Home = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get(`${BACKEND_URL}/course/courses`, { withCredentials: true })
+        const response = await axios.get(`${BACKEND_URL}/course/courses`)
         setCourses(response.data.courses)
 
       } catch (error) {
